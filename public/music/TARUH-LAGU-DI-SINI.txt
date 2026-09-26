@@ -1,0 +1,2 @@
+Taruh file lagu di sini dengan nama: lagu.mp3
+(atau ubah NEXT_PUBLIC_MUSIC_SRC di .env.local)
