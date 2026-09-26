@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Offline · Alya's Green Space</title>
+    <style>
+      :root { color-scheme: light dark; }
+      body { margin: 0; min-height: 100dvh; display: grid; place-items: center; font-family: system-ui, sans-serif;
+        background: #f7f5ee; color: #1c3d2f; text-align: center; padding: 24px; }
+      @media (prefers-color-scheme: dark) { body { background: #0f1d17; color: #e6f6ee; } }
+      .leaf { font-size: 56px; }
+      button { margin-top: 16px; border: 0; border-radius: 14px; padding: 12px 20px; background: #2e7351; color: #fff; font-weight: 600; font-size: 15px; }
+      small { display: block; margin-top: 28px; opacity: .6; }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="leaf">🌿</div>
+      <h1>Kamu sedang offline</h1>
+      <p>Green Space butuh internet untuk memuat datamu. Coba lagi sebentar ya, Alya.</p>
+      <button onclick="location.reload()">Coba lagi</button>
+      <small>Ciptaan Ringga</small>
+    </div>
+  </body>
+</html>

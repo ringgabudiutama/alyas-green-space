@@ -1,0 +1,23 @@
+{
+  "name": "Alya's Green Space",
+  "short_name": "Green Space",
+  "description": "Journal · Goals · Finance · Habits · Reflection — A little progress, every day.",
+  "start_url": "/welcome",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f7f5ee",
+  "theme_color": "#2e7351",
+  "lang": "id",
+  "categories": ["lifestyle", "productivity", "finance"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Tulis Journal", "short_name": "Journal", "url": "/journal/new", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Catat Transaksi", "short_name": "Transaksi", "url": "/finance/transactions?new=1", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Habit Hari Ini", "short_name": "Habits", "url": "/habits", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

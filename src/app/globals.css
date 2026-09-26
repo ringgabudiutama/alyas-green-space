@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f7f5ee;
+  --bg-accent: #eef5ef;
+  --card: #ffffff;
+  --ink: #1f2a24;
+  --ink-soft: #52605a;
+  --ink-muted: #7b8780;
+  --line: #e4e9e3;
+  /* warna grafik (divalidasi untuk colorblind-safety) */
+  --viz-income: #1f7a55;
+  --viz-expense: #c98a1a;
+  --viz-single: #2e7351;
+  --viz-grid: #e6ebe6;
+  color-scheme: light;
+}
+.dark {
+  --bg: #0f1d17;
+  --bg-accent: #122219;
+  --card: #152820;
+  --ink: #eef4ef;
+  --ink-soft: #bfcdc4;
+  --ink-muted: #8fa298;
+  --line: #243b30;
+  --viz-income: #2a8c62;
+  --viz-expense: #b98224;
+  --viz-single: #3aa577;
+  --viz-grid: #22382d;
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+body {
+  background-image: radial-gradient(1200px 500px at 100% -10%, var(--bg-accent), transparent 60%),
+    radial-gradient(900px 400px at -10% 110%, var(--bg-accent), transparent 60%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-[var(--line)] bg-[var(--card)] shadow-soft;
+  }
+  .card-pad {
+    @apply p-5 sm:p-6;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-200
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg)]
+      disabled:cursor-not-allowed disabled:opacity-60 active:scale-[0.98];
+  }
+  .btn-primary {
+    @apply btn bg-brand-600 text-white shadow-soft hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-lift;
+  }
+  .btn-soft {
+    @apply btn bg-mint-100 text-brand-800 hover:bg-mint-200 dark:bg-night-600 dark:text-mint-200 dark:hover:bg-night-500;
+  }
+  .btn-ghost {
+    @apply btn text-[var(--ink-soft)] hover:bg-mint-100 hover:text-brand-800 dark:hover:bg-night-600 dark:hover:text-mint-200;
+  }
+  .btn-danger {
+    @apply btn bg-red-50 text-red-700 hover:bg-red-100 dark:bg-red-950/40 dark:text-red-300;
+  }
+  .input {
+    @apply w-full rounded-xl border border-[var(--line)] bg-[var(--card)] px-3.5 py-3 text-base text-[var(--ink)] sm:py-2.5 sm:text-sm outline-none transition
+      placeholder:text-[var(--ink-muted)] focus:border-brand-400 focus:ring-4 focus:ring-brand-400/15;
+  }
+  .label {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wide text-[var(--ink-muted)];
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full bg-mint-100 px-2.5 py-1 text-xs font-medium text-brand-800 dark:bg-night-600 dark:text-mint-200;
+  }
+  .glass {
+    background: color-mix(in srgb, var(--card) 82%, transparent);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+  .muted {
+    @apply text-[var(--ink-muted)];
+  }
+  .soft {
+    @apply text-[var(--ink-soft)];
+  }
+  .page-title {
+    @apply font-display text-2xl font-semibold tracking-tight text-brand-900 dark:text-mint-100 sm:text-3xl;
+  }
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--line);
+  border-radius: 0.75rem;
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.page-enter {
+  animation: fadeUp 0.45s ease-out both;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sheetUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* posisi watermark & tombol musik: naik di atas bottom tab bar pada HP */
+@media (max-width: 1023px) {
+  :root:has(.has-bottom-nav) {
+    --wm-offset: 5.4rem;
+  }
+}
+
+/* rasa aplikasi: tanpa highlight biru saat tap, tanpa overscroll glow */
+html {
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+button,
+a {
+  touch-action: manipulation;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* scrollbar halus */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 999px;
+  border: 3px solid var(--bg);
+}

@@ -1,0 +1,2 @@
+Taruh foto Alya di sini dengan nama: alya.jpg
+(format JPG/PNG/WEBP; kalau beda nama, atur NEXT_PUBLIC_DEFAULT_PHOTO di .env.local)

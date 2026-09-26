@@ -1,0 +1,43 @@
+{
+  "name": "alyas-green-space",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Alya's Green Space — Journal · Goals · Finance · Habits · Reflection. Ciptaan Ringga.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:migrate": "node scripts/migrate.mjs",
+    "db:seed": "node scripts/seed.mjs",
+    "db:setup": "node scripts/migrate.mjs && node scripts/seed.mjs"
+  },
+  "dependencies": {
+    "@vercel/blob": ">=0.27.0",
+    "bcryptjs": "^2.4.3",
+    "chart.js": "^4.4.7",
+    "jose": "^5.9.6",
+    "jspdf": ">=3.0.3 <5",
+    "mysql2": "^3.11.5",
+    "next": "^15.5.9",
+    "react": "^19.2.3",
+    "react-chartjs-2": "^5.3.0",
+    "react-dom": "^19.2.3",
+    "server-only": "^0.0.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "autoprefixer": "^10.4.20",
+    "dotenv": "^16.4.7",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=18.18"
+  }
+}
