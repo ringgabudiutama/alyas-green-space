@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/client";
 
 /** Foto default Alya. Taruh file di public/images/alya.jpg (atau atur NEXT_PUBLIC_DEFAULT_PHOTO). */
@@ -29,8 +29,14 @@ export function Logo({ size = 36, withText = true, className }: { size?: number;
 export function Avatar({ src, name = "Alya", size = 40, ring = false, className }: { src?: string | null; name?: string; size?: number; ring?: boolean; className?: string }) {
   const candidates = [src, DEFAULT_PHOTO].filter(Boolean) as string[];
   const [idx, setIdx] = useState(0);
+  const imgRef = useRef<HTMLImageElement>(null);
   useEffect(() => setIdx(0), [src]);
   const current = candidates[idx];
+  // gambar yang gagal dimuat sebelum React aktif (SSR) tidak memicu onError → cek manual
+  useEffect(() => {
+    const img = imgRef.current;
+    if (img && img.complete && img.naturalWidth === 0) setIdx((i) => i + 1);
+  }, [current]);
   const initials = name
     .split(" ")
     .filter(Boolean)
@@ -48,7 +54,7 @@ export function Avatar({ src, name = "Alya", size = 40, ring = false, className 
     >
       {current ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={current} alt={`Foto ${name}`} className="h-full w-full object-cover" onError={() => setIdx((i) => i + 1)} />
+        <img ref={imgRef} src={current} alt="" className="h-full w-full object-cover" onError={() => setIdx((i) => i + 1)} />
       ) : (
         <span className="grid h-full w-full place-items-center font-display font-bold text-white" style={{ fontSize: size * 0.38 }}>
           {initials || "A"}
