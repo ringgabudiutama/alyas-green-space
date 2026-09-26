@@ -63,5 +63,5 @@ export async function uploadImage(file: File): Promise<string> {
 }
 
 export function cn(...c: unknown[]) {
-  return c.filter((x) => typeof x === "string" && x).join(" ");
+  return c.filter((x) => typeof x === 'string' && x).join(' ');
 }
